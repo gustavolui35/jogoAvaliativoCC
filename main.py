@@ -1,6 +1,7 @@
 import pygame
 import random
 from recursos.funcoes import inicializarBancoDeDados, limpar_tela, escreverDados, maior_pontuador
+from recursos.funcoes import gerar_passageiro
 
 limpar_tela()
 inicializarBancoDeDados()

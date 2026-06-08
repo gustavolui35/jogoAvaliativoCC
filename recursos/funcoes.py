@@ -1,6 +1,10 @@
 import os, time
 import json
 from datetime import datetime
+import random
+
+def gerar_passageiro():
+    return random.randint(200, 450)
 
 def limpar_tela():
     os.system("cls")
