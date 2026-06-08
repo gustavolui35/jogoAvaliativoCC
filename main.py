@@ -33,7 +33,7 @@ missel = pygame.image.load("bases/missile.png")
 missel = pygame.transform.scale(missel, (125,25))
 missileSound = pygame.mixer.Sound("bases/missile.wav")
 explosaoSound = pygame.mixer.Sound("bases/explosao.wav")
-pygame.mixer.music.load("bases/ironsound.mp3")
+pygame.mixer.music.load("bases/TrilhaSonora.mp3")
 fonteMenu = pygame.font.SysFont("comicsans",18)
 
 def jogar():
