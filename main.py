@@ -64,14 +64,6 @@ def jogar():
                 movimentoYPersona = 0
             elif evento.type == pygame.KEYUP and evento.key == pygame.K_DOWN:
                 movimentoYPersona = 0
-            elif evento.type == pygame.KEYDOWN and evento.key == pygame.K_RIGHT:
-                movimentoXPersona = velocidadeMovPersona
-            elif evento.type == pygame.KEYDOWN and evento.key == pygame.K_LEFT:
-                movimentoXPersona = -velocidadeMovPersona
-            elif evento.type == pygame.KEYUP and evento.key == pygame.K_RIGHT:
-                movimentoXPersona = 0
-            elif evento.type == pygame.KEYUP and evento.key == pygame.K_LEFT:
-                movimentoXPersona = 0
                 
         
         posicaoXPersona = posicaoXPersona + movimentoXPersona          
