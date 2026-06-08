@@ -24,6 +24,7 @@ branco = (255, 255, 255)
 preto = (0, 0, 0)
 
 fundo = pygame.image.load("bases/Fundo.png")
+fundo = pygame.transform.scale(fundo, (1129,700))
 fundoDead = pygame.image.load("bases/FimDeJogo.png")
 fundoStart = pygame.image.load("bases/TelaInicial.png")
 
@@ -37,7 +38,7 @@ fonteMenu = pygame.font.SysFont("comicsans",18)
 
 def jogar():
     fundoMov1 = 0
-    fundoMov2 = 1129
+    fundoMov2 = fundo.get_width()
     posicaoXPersona = 0
     posicaoYPersona = 60
     movimentoXPersona  = 0
@@ -74,14 +75,14 @@ def jogar():
         
         posicaoXPersona = posicaoXPersona + movimentoXPersona          
         posicaoYPersona = posicaoYPersona + movimentoYPersona            
-        if posicaoXPersona < 0 :
-            posicaoXPersona = 0
+        if posicaoXPersona < 180 :
+            posicaoXPersona = 180
         elif posicaoXPersona > 685:
             posicaoXPersona = 685
         if posicaoYPersona < 0 :
             posicaoYPersona = 0
-        elif posicaoYPersona > 150:
-            posicaoYPersona = 150
+        elif posicaoYPersona > 430:
+            posicaoYPersona = 430
             
             
         posicaoXMissel = posicaoXMissel - velocidadeMissel
@@ -89,7 +90,7 @@ def jogar():
             posicaoXMissel = 800
             pontos = pontos + 1
             velocidadeMissel = velocidadeMissel + 1
-            posicaoYMissel = random.randint(0,200)
+            posicaoYMissel = random.randint(180,430)
                             
         tela.fill(branco)
         tela.blit(fundo, (fundoMov1,0) )
