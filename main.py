@@ -24,15 +24,14 @@ branco = (255, 255, 255)
 preto = (0, 0, 0)
 
 fundo = pygame.image.load("bases/Fundo.png")
-fundoDead = pygame.image.load("bases/backgroundDead.jpg")
-fundoStart = pygame.image.load("bases/backgroundStart.jpg")
+fundoDead = pygame.image.load("bases/FimDeJogo.png")
+fundoStart = pygame.image.load("bases/TelaInicial.png")
 
 iron = pygame.image.load("bases/Personagem.png")
 iron = pygame.transform.scale(iron, (116,51))
 missel = pygame.image.load("bases/missile.png")
 missel = pygame.transform.scale(missel, (125,25))
-missileSound = pygame.mixer.Sound("bases/missile.wav")
-explosaoSound = pygame.mixer.Sound("bases/explosao.wav")
+explosaoSound = pygame.mixer.Sound("bases/Batida.mp3")
 pygame.mixer.music.load("bases/TrilhaSonora.mp3")
 fonteMenu = pygame.font.SysFont("comicsans",18)
 
@@ -48,7 +47,6 @@ def jogar():
     posicaoYMissel = 100
     velocidadeMissel = 2
     pontos = 0
-    pygame.mixer.Sound.play(missileSound)
     pygame.mixer.music.play(-1)
     dificuldade = 20
     while True:
@@ -88,7 +86,6 @@ def jogar():
             
         posicaoXMissel = posicaoXMissel - velocidadeMissel
         if posicaoXMissel < -125:
-            pygame.mixer.Sound.play(missileSound)
             posicaoXMissel = 800
             pontos = pontos + 1
             velocidadeMissel = velocidadeMissel + 1
