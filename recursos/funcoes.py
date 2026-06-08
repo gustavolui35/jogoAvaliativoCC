@@ -31,8 +31,10 @@ def escreverDados(nome, pontos):
         dadosDict = {}
         
     data_br = datetime.now().strftime("%d/%m/%Y")
-    dadosDict[nome] = (pontos, data_br)
-    
+    hora_br = datetime.now().strftime("%H:%M:%S")
+
+    dadosDict[nome] = (pontos, data_br, hora_br)
+
     banco = open("base.atitus","w")
     banco.write(json.dumps(dadosDict))
     banco.close()
@@ -50,6 +52,7 @@ def maior_pontuador():
 
     nome_maior = None
     dataJogada =  None
+    horaJogada = None
     maior_pontos = -1
 
     for nome, info in dadosDict.items():
@@ -59,6 +62,7 @@ def maior_pontuador():
         if pontos > maior_pontos:
             maior_pontos = pontos
             nome_maior = nome
-            dataJogada = info[1]            
+            dataJogada = info[1]
+            horaJogada = info[2]            
 
-    return nome_maior, maior_pontos, dataJogada
+    return nome_maior, maior_pontos, dataJogada, horaJogada

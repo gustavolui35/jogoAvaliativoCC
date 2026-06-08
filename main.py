@@ -5,7 +5,7 @@ from recursos.funcoes import gerar_passageiro
 
 limpar_tela()
 inicializarBancoDeDados()
-nome_maior, maior_pontos, dataJogada = maior_pontuador()
+nome_maior, maior_pontos, dataJogada, horaJogada = maior_pontuador()
 pygame.init()
 
 while True:
@@ -210,13 +210,19 @@ def start():
         tela.fill(branco)
         tela.blit(fundoStart, (0,0))
         startButton = pygame.draw.rect(tela, branco, (10,10, larguraButtonStart, alturaButtonStart), border_radius=15)
+        textoNome = fonteMenu.render(f"Jogador: {nome}", True, branco)
+        tela.blit(textoNome, (10,120))
+        texto1 = fonteMenu.render("Desvie dos carros para sobreviver.", True, branco)
+        tela.blit(texto1, (10,150))
+        texto2 = fonteMenu.render("Use as setas para mover o taxi.", True, branco)
+        tela.blit(texto2, (10,180))
         startTexto = fonteMenu.render("Iniciar Game", True, preto)
         tela.blit(startTexto, (25,12))
         
         quitButton = pygame.draw.rect(tela, branco, (10,60, larguraButtonQuit, alturaButtonQuit), border_radius=15)
         quitTexto = fonteMenu.render("Sair do Game", True, preto)
         tela.blit(quitTexto, (25,62))
-        texto = fonteMenu.render(f"The Best - {nome_maior} - {maior_pontos} - { dataJogada} ", True, branco)
+        texto = fonteMenu.render(f"The Best - {nome_maior} - {maior_pontos} - { dataJogada} - {horaJogada} ", True, branco)
         tela.blit(texto, (480,15))
         
 
