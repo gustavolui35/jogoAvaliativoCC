@@ -16,7 +16,7 @@ while True:
         
 tamanho = (1000,700)
 pygame.display.set_caption("Iron Man do Marcão")
-icone  = pygame.image.load("bases/icone.png")
+icone  = pygame.image.load("bases/Icone.png")
 pygame.display.set_icon(icone)
 relogio = pygame.time.Clock()
 tela = pygame.display.set_mode( tamanho ) 
@@ -27,7 +27,7 @@ fundo = pygame.image.load("bases/background.jpg")
 fundoDead = pygame.image.load("bases/backgroundDead.jpg")
 fundoStart = pygame.image.load("bases/backgroundStart.jpg")
 
-iron = pygame.image.load("bases/IronMan.png")
+iron = pygame.image.load("bases/Personagem.png")
 iron = pygame.transform.scale(iron, (116,51))
 missel = pygame.image.load("bases/missile.png")
 missel = pygame.transform.scale(missel, (125,25))
