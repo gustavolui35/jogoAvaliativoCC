@@ -23,7 +23,7 @@ tela = pygame.display.set_mode( tamanho )
 branco = (255, 255, 255)
 preto = (0, 0, 0)
 
-fundo = pygame.image.load("bases/background.jpg")
+fundo = pygame.image.load("bases/Fundo.png")
 fundoDead = pygame.image.load("bases/backgroundDead.jpg")
 fundoStart = pygame.image.load("bases/backgroundStart.jpg")
 
