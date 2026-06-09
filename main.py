@@ -90,6 +90,7 @@ def jogar():
             elif evento.type == pygame.KEYDOWN:
 
                 if evento.key == pygame.K_ESCAPE:
+                    pygame.quit()
                     quit()
 
                 elif evento.key == pygame.K_SPACE:
@@ -213,13 +214,13 @@ def jogar():
             if len(list(set(pixelsMisselX).intersection(set(pixelsPersonaX)))) > dificuldade:
 
                 escreverDados(nome,pontos)
-                dead()
+                dead(pontos)
 
         pygame.display.update()
         relogio.tick(60)
 
 
-def dead():
+def dead(pontos):
     
     voz.say(f"Fim de jogo {nome}. Até a próxima!")
     voz.runAndWait()
@@ -233,6 +234,7 @@ def dead():
     while True:
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
+                pygame.quit()
                 quit()
             elif evento.type == pygame.MOUSEBUTTONDOWN:
                 if startButton.collidepoint(evento.pos):
@@ -258,6 +260,13 @@ def dead():
             
         tela.fill(branco)
         tela.blit(fundoDead, (0,0))
+        
+        textoPontos = fonteMenu.render(f"Pontuacao: {pontos}", True, branco)
+        tela.blit(textoPontos, (10, 120))
+
+        textoRecorde = fonteMenu.render(f"Recorde: {nome_maior} - {maior_pontos}", True, branco)
+        tela.blit(textoRecorde, (10, 150))
+
         startButton = pygame.draw.rect(tela, branco, (10,10, larguraButtonStart, alturaButtonStart), border_radius=15)
         startTexto = fonteMenu.render("Iniciar Game", True, preto)
         tela.blit(startTexto, (25,12))
