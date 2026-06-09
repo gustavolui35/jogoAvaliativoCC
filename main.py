@@ -74,6 +74,7 @@ def jogar():
         for evento in pygame.event.get():
 
             if evento.type == pygame.QUIT:
+                pygame.quit()
                 quit()
 
             elif evento.type == pygame.KEYDOWN:
@@ -181,6 +182,9 @@ def jogar():
 
         texto = fonteMenu.render("Pontos: " + str(pontos),True,branco)
         tela.blit(texto,(700,15))
+        
+        textoAjuda = fonteMenu.render("Press Space to Pause Game", True, branco)
+        tela.blit(textoAjuda, (10, 15))
 
         pixelsPersonaX = list(range(posicaoXPersona,posicaoXPersona+116))
         pixelsPersonaY = list(range(posicaoYPersona,posicaoYPersona+51))
