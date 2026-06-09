@@ -1,7 +1,7 @@
 # GTA Taxi Driver
 
 ## Desenvolvedor
-
+commit de colaboração realizado por rodrigo-lordi RA: 1111500
 - Gustavo Lui da Silva
 - RA: 1139499
 
