@@ -39,6 +39,7 @@ explosaoSound = pygame.mixer.Sound("bases/Batida.mp3")
 pygame.mixer.music.load("bases/TrilhaSonora.mp3")
 fonteMenu = pygame.font.SysFont("comicsans",18)
 
+
 def jogar():
     fundoMov1 = 0
     fundoMov2 = fundo.get_width()
@@ -62,6 +63,8 @@ def jogar():
 
     pontos = 0
 
+    pausado = False
+
     pygame.mixer.music.play(-1)
 
     dificuldade = 20
@@ -73,17 +76,40 @@ def jogar():
             if evento.type == pygame.QUIT:
                 quit()
 
-            elif evento.type == pygame.KEYDOWN and evento.key == pygame.K_UP:
-                movimentoYPersona = -velocidadeMovPersona
+            elif evento.type == pygame.KEYDOWN:
 
-            elif evento.type == pygame.KEYDOWN and evento.key == pygame.K_DOWN:
-                movimentoYPersona = velocidadeMovPersona
+                if evento.key == pygame.K_ESCAPE:
+                    quit()
 
-            elif evento.type == pygame.KEYUP and evento.key == pygame.K_UP:
-                movimentoYPersona = 0
+                elif evento.key == pygame.K_SPACE:
+                    pausado = not pausado
 
-            elif evento.type == pygame.KEYUP and evento.key == pygame.K_DOWN:
-                movimentoYPersona = 0
+                elif evento.key == pygame.K_UP:
+                    movimentoYPersona = -velocidadeMovPersona
+
+                elif evento.key == pygame.K_DOWN:
+                    movimentoYPersona = velocidadeMovPersona
+
+            elif evento.type == pygame.KEYUP:
+
+                if evento.key == pygame.K_UP:
+                    movimentoYPersona = 0
+
+                elif evento.key == pygame.K_DOWN:
+                    movimentoYPersona = 0
+
+        if pausado:
+
+            tela.fill(branco)
+            tela.blit(fundo,(fundoMov1,0))
+            tela.blit(fundo,(fundoMov2,0))
+
+            textoPause = fonteMenu.render("PAUSE",True,branco)
+            tela.blit(textoPause,(450,320))
+
+            pygame.display.update()
+            relogio.tick(60)
+            continue
 
         # SOL PULSANTE
 
@@ -153,10 +179,8 @@ def jogar():
         tela.blit(iron,(posicaoXPersona,posicaoYPersona))
         tela.blit(missel,(posicaoXMissel,posicaoYMissel))
 
-        texto = fonteMenu.render("Pontos: "+str(pontos),True,branco)
+        texto = fonteMenu.render("Pontos: " + str(pontos),True,branco)
         tela.blit(texto,(700,15))
-
-        # COLISAO
 
         pixelsPersonaX = list(range(posicaoXPersona,posicaoXPersona+116))
         pixelsPersonaY = list(range(posicaoYPersona,posicaoYPersona+51))
@@ -173,7 +197,8 @@ def jogar():
 
         pygame.display.update()
         relogio.tick(60)
-        
+
+
 def dead():
     pygame.mixer.music.stop()
     pygame.mixer.Sound.play(explosaoSound)
