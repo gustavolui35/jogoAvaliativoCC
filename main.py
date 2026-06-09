@@ -1,5 +1,10 @@
 import pygame
 import random
+import pyttsx3
+
+voz = pyttsx3.init()
+voz.setProperty("rate", 180)
+
 from recursos.funcoes import inicializarBancoDeDados, limpar_tela, escreverDados, maior_pontuador
 from recursos.funcoes import gerar_passageiro
 
@@ -66,6 +71,11 @@ def jogar():
     pausado = False
 
     pygame.mixer.music.play(-1)
+    
+    voz.say(f"Bem vindo {nome}. Prepare-se para dirigir. Boa sorte!")
+    voz.runAndWait()
+
+
 
     dificuldade = 20
 
@@ -155,6 +165,12 @@ def jogar():
         if posicaoXMissel < -125:
             posicaoXMissel = 800
             pontos += 1
+            
+            if pontos == 20:
+             voz.say("Parabéns! Você sobreviveu ao trânsito até agora.")
+             voz.runAndWait()
+
+
             velocidadeMissel += 1
             posicaoYMissel = random.randint(180,430)
 
@@ -204,6 +220,10 @@ def jogar():
 
 
 def dead():
+    
+    voz.say(f"Fim de jogo {nome}. Até a próxima!")
+    voz.runAndWait()
+
     pygame.mixer.music.stop()
     pygame.mixer.Sound.play(explosaoSound)
     larguraButtonStart = 150
