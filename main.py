@@ -28,6 +28,8 @@ relogio = pygame.time.Clock()
 tela = pygame.display.set_mode( tamanho ) 
 branco = (255, 255, 255)
 preto = (0, 0, 0)
+amarelo = (255, 215, 0)
+
 
 fundo = pygame.image.load("bases/Fundo.png")
 fundo = pygame.transform.scale(fundo, (1129,700))
@@ -42,7 +44,7 @@ passaro = pygame.image.load("bases/Passaro.png")
 passaro = pygame.transform.scale(passaro, (50,40))
 explosaoSound = pygame.mixer.Sound("bases/Batida.mp3")
 pygame.mixer.music.load("bases/TrilhaSonora.mp3")
-fonteMenu = pygame.font.SysFont("comicsans",18)
+fonteMenu = pygame.font.SysFont("arial", 24, bold=True)
 
 
 def jogar():
@@ -286,52 +288,56 @@ def start():
     alturaButtonStart  = 40
     larguraButtonQuit = 150
     alturaButtonQuit  = 40
-    while True:
-        for evento in pygame.event.get():
-            if evento.type == pygame.QUIT:
+while True:
+
+    for evento in pygame.event.get():
+
+        if evento.type == pygame.QUIT:
+            pygame.quit()
+            quit()
+
+        elif evento.type == pygame.MOUSEBUTTONUP:
+
+            if startButton.collidepoint(evento.pos):
+                jogar()
+
+            if quitButton.collidepoint(evento.pos):
+                pygame.quit()
                 quit()
-            elif evento.type == pygame.MOUSEBUTTONDOWN:
-                if startButton.collidepoint(evento.pos):
-                    larguraButtonStart = 140
-                    alturaButtonStart  = 35
-                if quitButton.collidepoint(evento.pos):
-                    larguraButtonQuit = 140
-                    alturaButtonQuit  = 35
 
-                
-            elif evento.type == pygame.MOUSEBUTTONUP:
-                # Verifica se o clique foi dentro do retângulo
-                if startButton.collidepoint(evento.pos):
-                    #pygame.mixer.music.play(-1)
-                    larguraButtonStart = 150
-                    alturaButtonStart  = 40
-                    jogar()
-                if quitButton.collidepoint(evento.pos):
-                    #pygame.mixer.music.play(-1)
-                    larguraButtonQuit = 150
-                    alturaButtonQuit  = 40
-                    quit()
-            
-        tela.fill(branco)
-        tela.blit(fundoStart, (0,0))
-        startButton = pygame.draw.rect(tela, branco, (10,10, larguraButtonStart, alturaButtonStart), border_radius=15)
-        textoNome = fonteMenu.render(f"Jogador: {nome}", True, branco)
-        tela.blit(textoNome, (10,120))
-        texto1 = fonteMenu.render("Desvie dos carros para sobreviver.", True, branco)
-        tela.blit(texto1, (10,150))
-        texto2 = fonteMenu.render("Use as setas para mover o taxi.", True, branco)
-        tela.blit(texto2, (10,180))
-        startTexto = fonteMenu.render("Iniciar Game", True, preto)
-        tela.blit(startTexto, (25,12))
-        
-        quitButton = pygame.draw.rect(tela, branco, (10,60, larguraButtonQuit, alturaButtonQuit), border_radius=15)
-        quitTexto = fonteMenu.render("Sair do Game", True, preto)
-        tela.blit(quitTexto, (25,62))
-        texto = fonteMenu.render(f"The Best - {nome_maior} - {maior_pontos} - { dataJogada} - {horaJogada} ", True, branco)
-        tela.blit(texto, (480,15))
-        
+    # Desenha a tela
+    tela.fill(branco)
+    tela.blit(fundoStart, (0,0))
 
-        pygame.display.update()
-        relogio.tick(60)
-           
-start()
+    # Retângulos para testar a posição
+    startButton = pygame.Rect(380, 360, 250, 65)
+    quitButton = pygame.Rect(380, 440, 250, 60)
+
+    # Nome do jogador
+# Sombra
+    textoNome = fonteMenu.render(f"Jogador: {nome}", True, preto)
+    tela.blit(textoNome, (12,525))
+
+# Texto
+    textoNome = fonteMenu.render(f"Jogador: {nome}", True, amarelo)
+    tela.blit(textoNome, (410, 525 ))
+# Instruções
+    texto1 = fonteMenu.render("Desvie dos carros para sobreviver.", True, amarelo)
+    tela.blit(texto1, (15, 15))
+
+    texto2 = fonteMenu.render("Use as setas para mover o taxi.", True, amarelo)
+    tela.blit(texto2, (15, 35))
+
+# Melhor jogador
+    textoRecorde = fonteMenu.render(
+    f"The Best - {nome_maior} - {maior_pontos} - {dataJogada} - {horaJogada}",
+    True,
+    amarelo
+)
+    tela.blit(textoRecorde, (480, 15))
+    
+    pygame.display.update()
+    relogio.tick(60)
+
+
+    start()
