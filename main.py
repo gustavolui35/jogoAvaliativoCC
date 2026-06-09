@@ -33,6 +33,8 @@ iron = pygame.image.load("bases/Personagem.png")
 iron = pygame.transform.scale(iron, (180, 90))
 missel = pygame.image.load("bases/Azul.png")
 missel = pygame.transform.scale(missel, (160,80))
+passaro = pygame.image.load("bases/Passaro.png")
+passaro = pygame.transform.scale(passaro, (50,40))
 explosaoSound = pygame.mixer.Sound("bases/Batida.mp3")
 pygame.mixer.music.load("bases/TrilhaSonora.mp3")
 fonteMenu = pygame.font.SysFont("comicsans",18)
@@ -41,6 +43,8 @@ def jogar():
     fundoMov1 = 0
     fundoMov2 = fundo.get_width()
     posicaoXPersona = 0
+    posicaoXPassaro = 1000
+    posicaoYPassaro = random.randint(20,150)
     posicaoYPersona = 60
     movimentoXPersona  = 0
     movimentoYPersona  = 0
@@ -76,6 +80,12 @@ def jogar():
             posicaoYPersona = 0
         elif posicaoYPersona > 430:
             posicaoYPersona = 430
+       
+        posicaoXPassaro = posicaoXPassaro - 2
+
+        if posicaoXPassaro < -50:
+            posicaoXPassaro = 1000
+            posicaoYPassaro = random.randint(20,150)
             
             
         posicaoXMissel = posicaoXMissel - velocidadeMissel
@@ -96,6 +106,7 @@ def jogar():
             fundoMov2 = 1129
         
         
+        tela.blit(passaro, (posicaoXPassaro, posicaoYPassaro))
         tela.blit(iron, (posicaoXPersona,posicaoYPersona))
         tela.blit( missel, (posicaoXMissel, posicaoYMissel) )
         texto = fonteMenu.render("Pontos: "+str(pontos), True, branco)
