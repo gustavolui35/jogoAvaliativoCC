@@ -42,93 +42,138 @@ fonteMenu = pygame.font.SysFont("comicsans",18)
 def jogar():
     fundoMov1 = 0
     fundoMov2 = fundo.get_width()
+
+    raioSol = 30
+    aumentando = True
+
     posicaoXPersona = 0
     posicaoXPassaro = 1000
     posicaoYPassaro = random.randint(20,150)
     posicaoYPersona = 60
-    movimentoXPersona  = 0
-    movimentoYPersona  = 0
+
+    movimentoXPersona = 0
+    movimentoYPersona = 0
+
     velocidadeMovPersona = 5
+
     posicaoXMissel = 800
     posicaoYMissel = 100
     velocidadeMissel = 2
+
     pontos = 0
+
     pygame.mixer.music.play(-1)
+
     dificuldade = 20
+
     while True:
+
         for evento in pygame.event.get():
+
             if evento.type == pygame.QUIT:
                 quit()
-                movimentoXPersona = 0
+
             elif evento.type == pygame.KEYDOWN and evento.key == pygame.K_UP:
                 movimentoYPersona = -velocidadeMovPersona
+
             elif evento.type == pygame.KEYDOWN and evento.key == pygame.K_DOWN:
                 movimentoYPersona = velocidadeMovPersona
+
             elif evento.type == pygame.KEYUP and evento.key == pygame.K_UP:
                 movimentoYPersona = 0
+
             elif evento.type == pygame.KEYUP and evento.key == pygame.K_DOWN:
                 movimentoYPersona = 0
 
-        posicaoXPersona = posicaoXPersona + movimentoXPersona          
-        posicaoYPersona = posicaoYPersona + movimentoYPersona            
-        if posicaoXPersona < 180 :
+        # SOL PULSANTE
+
+        if aumentando:
+            raioSol += 1
+        else:
+            raioSol -= 1
+
+        if raioSol >= 40:
+            aumentando = False
+
+        if raioSol <= 30:
+            aumentando = True
+
+        # MOVIMENTO PERSONAGEM
+
+        posicaoXPersona += movimentoXPersona
+        posicaoYPersona += movimentoYPersona
+
+        if posicaoXPersona < 180:
             posicaoXPersona = 180
         elif posicaoXPersona > 685:
             posicaoXPersona = 685
-        if posicaoYPersona < 0 :
+
+        if posicaoYPersona < 0:
             posicaoYPersona = 0
         elif posicaoYPersona > 430:
             posicaoYPersona = 430
-       
-        posicaoXPassaro = posicaoXPassaro - 2
+
+        # PASSARO
+
+        posicaoXPassaro -= 2
 
         if posicaoXPassaro < -50:
             posicaoXPassaro = 1000
             posicaoYPassaro = random.randint(20,150)
-            
-            
-        posicaoXMissel = posicaoXMissel - velocidadeMissel
+
+        # MISSEL
+
+        posicaoXMissel -= velocidadeMissel
+
         if posicaoXMissel < -125:
             posicaoXMissel = 800
-            pontos = pontos + 1
-            velocidadeMissel = velocidadeMissel + 1
+            pontos += 1
+            velocidadeMissel += 1
             posicaoYMissel = random.randint(180,430)
-                            
+
+        # DESENHAR
+
         tela.fill(branco)
-        tela.blit(fundo, (fundoMov1,0) )
-        tela.blit(fundo, (fundoMov2,0) )
+
+        tela.blit(fundo,(fundoMov1,0))
+        tela.blit(fundo,(fundoMov2,0))
+
+        pygame.draw.circle(tela,(255,255,0),(900,80),raioSol)
+
         fundoMov1 -= 1
         fundoMov2 -= 1
+
         if fundoMov1 <= -1129:
             fundoMov1 = 1129
+
         elif fundoMov2 <= -1129:
             fundoMov2 = 1129
-        
-        
-        tela.blit(passaro, (posicaoXPassaro, posicaoYPassaro))
-        tela.blit(iron, (posicaoXPersona,posicaoYPersona))
-        tela.blit( missel, (posicaoXMissel, posicaoYMissel) )
-        texto = fonteMenu.render("Pontos: "+str(pontos), True, branco)
-        tela.blit(texto, (700,15))
-            
-        pixelsPersonaX = list(range(posicaoXPersona, posicaoXPersona+116))
-        pixelsPersonaY = list(range(posicaoYPersona, posicaoYPersona+51))
-        pixelsMisselX = list(range(posicaoXMissel, posicaoXMissel + 125))
-        pixelsMisselY = list(range(posicaoYMissel, posicaoYMissel + 25))
-        if  len( list( set(pixelsMisselY).intersection(set(pixelsPersonaY))) ) > dificuldade:
-            if len( list( set(pixelsMisselX).intersection(set(pixelsPersonaX))   ) )  > dificuldade:
-                escreverDados(nome, pontos)
+
+        tela.blit(passaro,(posicaoXPassaro,posicaoYPassaro))
+        tela.blit(iron,(posicaoXPersona,posicaoYPersona))
+        tela.blit(missel,(posicaoXMissel,posicaoYMissel))
+
+        texto = fonteMenu.render("Pontos: "+str(pontos),True,branco)
+        tela.blit(texto,(700,15))
+
+        # COLISAO
+
+        pixelsPersonaX = list(range(posicaoXPersona,posicaoXPersona+116))
+        pixelsPersonaY = list(range(posicaoYPersona,posicaoYPersona+51))
+
+        pixelsMisselX = list(range(posicaoXMissel,posicaoXMissel+125))
+        pixelsMisselY = list(range(posicaoYMissel,posicaoYMissel+25))
+
+        if len(list(set(pixelsMisselY).intersection(set(pixelsPersonaY)))) > dificuldade:
+
+            if len(list(set(pixelsMisselX).intersection(set(pixelsPersonaX)))) > dificuldade:
+
+                escreverDados(nome,pontos)
                 dead()
-                
-            else:
-                print("Ainda Vivo, mas por pouco!")
-        else:
-            print("Ainda Vivo")
-        
-        
+
         pygame.display.update()
         relogio.tick(60)
-
+        
 def dead():
     pygame.mixer.music.stop()
     pygame.mixer.Sound.play(explosaoSound)
