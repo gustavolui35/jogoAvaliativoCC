@@ -15,14 +15,14 @@ def aguarde(segundos):
 def inicializarBancoDeDados():
     # r - read, w - write, a - append
     try:
-        banco = open("base.atitus","r")
+        banco = open("log.dat","r")
     except:
         print("Banco de Dados Inexistente. Criando...")
-        banco = open("base.atitus","w")
+        banco = open("log.dat","w")
     
 def escreverDados(nome, pontos):
     # INI - inserindo no arquivo
-    banco = open("base.atitus","r")
+    banco = open("log.dat","r")
     dados = banco.read()
     banco.close()
     if dados != "":
@@ -35,14 +35,14 @@ def escreverDados(nome, pontos):
 
     dadosDict[nome] = (pontos, data_br, hora_br)
 
-    banco = open("base.atitus","w")
+    banco = open("log.dat","w")
     banco.write(json.dumps(dadosDict))
     banco.close()
     
     # END - inserindo no arquivo
     
 def maior_pontuador():
-    banco = open("base.atitus","r")
+    banco = open("log.dat","r")
     dados = banco.read()
     banco.close()
     if dados != "":
