@@ -7,11 +7,11 @@ executaveis = [
                     target_name="IronManMarcao.exe"
                    ) ]
 cx_Freeze.setup(
-    name = "Iron Man",
+    name = "Taxi GTA",
     options={
         "build_exe":{
             "packages":["pygame"],
-            "include_files":["assets","recursos"]
+            "include_files":["bases","recursos"]
         }
     }, executables = executaveis
 )
