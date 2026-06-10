@@ -148,11 +148,12 @@ def jogar():
         elif posicaoXPersona > 685:
             posicaoXPersona = 685
 
-        if posicaoYPersona < 0:
-            posicaoYPersona = 0
-        elif posicaoYPersona > 430:
-            posicaoYPersona = 430
+# Limita o táxi à pista
+        if posicaoYPersona < 170:
+         posicaoYPersona = 170
 
+        elif posicaoYPersona > 420:
+         posicaoYPersona = 420
         # PASSARO
 
         posicaoXPassaro -= 2
