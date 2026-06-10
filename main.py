@@ -275,13 +275,14 @@ def dead(pontos):
         textoRecorde = fonteMenu.render(f"Recorde: {nome_maior} - {maior_pontos}", True, branco)
         tela.blit(textoRecorde, (10, 150))
 
-        startButton = pygame.draw.rect(tela, branco, (10,10, larguraButtonStart, alturaButtonStart), border_radius=15)
-        startTexto = fonteMenu.render("Iniciar Game", True, preto)
-        tela.blit(startTexto, (25,12))
-        
-        quitButton = pygame.draw.rect(tela, branco, (10,60, larguraButtonQuit, alturaButtonQuit), border_radius=15)
-        quitTexto = fonteMenu.render("Sair do Game", True, preto)
-        tela.blit(quitTexto, (25,62))
+        # Botões invisíveis sobre a imagem
+        startButton = pygame.Rect(370, 520, 270, 60)
+        quitButton = pygame.Rect(370, 600, 270, 60)
+
+        # Descomente apenas para ajustar a posição
+        pygame.draw.rect(tela, (255,0,0), startButton, 2)
+        pygame.draw.rect(tela, (0,255,0), quitButton, 2)
+
 
 
         pygame.display.update()
