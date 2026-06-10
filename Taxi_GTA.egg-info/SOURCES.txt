@@ -1,0 +1,6 @@
+README.md
+setup.py
+Taxi_GTA.egg-info/PKG-INFO
+Taxi_GTA.egg-info/SOURCES.txt
+Taxi_GTA.egg-info/dependency_links.txt
+Taxi_GTA.egg-info/top_level.txt

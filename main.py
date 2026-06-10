@@ -1,9 +1,15 @@
 import pygame
 import random
-import pyttsx3
 
-voz = pyttsx3.init()
-voz.setProperty("rate", 180)
+try:
+    import pyttsx3
+
+    voz = pyttsx3.init()
+    voz.setProperty("rate", 180)
+
+except:
+    voz = None
+
 
 from recursos.trabalho import inicializarBancoDeDados, limpar_tela, escreverDados, maior_pontuador
 from recursos.trabalho import gerar_passageiro
@@ -77,8 +83,9 @@ def jogar():
 
     pygame.mixer.music.play(-1)
     
-    voz.say(f"Bem vindo {nome}. Prepare-se para dirigir. Boa sorte!")
-    voz.runAndWait()
+    if voz:
+        voz.say(f"Bem vindo {nome}. Prepare-se para dirigir. Boa sorte!")
+        voz.runAndWait()
 
 
 
@@ -174,8 +181,9 @@ def jogar():
             pontos += 1
             
             if pontos == 20:
-             voz.say("Parabéns! Você sobreviveu ao trânsito até agora.")
-             voz.runAndWait()
+             if voz:
+              voz.say("Parabéns! Você sobreviveu ao trânsito até agora.")
+              voz.runAndWait()
 
 
             velocidadecarro += 1
@@ -230,8 +238,9 @@ def jogar():
 
 def dead(pontos):
     
-    voz.say(f"Fim de jogo {nome}. Até a próxima!")
-    voz.runAndWait()
+    if voz:
+     voz.say(f"Fim de jogo {nome}. Até a próxima!")
+     voz.runAndWait()
 
     pygame.mixer.music.stop()
     pygame.mixer.Sound.play(explosaoSound)
@@ -248,9 +257,6 @@ def dead(pontos):
                 if startButton.collidepoint(evento.pos):
                     larguraButtonStart = 140
                     alturaButtonStart  = 35
-                if quitButton.collidepoint(evento.pos):
-                    larguraButtonQuit = 140
-                    alturaButtonQuit  = 35
 
                 
             elif evento.type == pygame.MOUSEBUTTONUP:
@@ -260,11 +266,6 @@ def dead(pontos):
                     larguraButtonStart = 150
                     alturaButtonStart  = 40
                     jogar()
-                if quitButton.collidepoint(evento.pos):
-                    #pygame.mixer.music.play(-1)
-                    larguraButtonQuit = 150
-                    alturaButtonQuit  = 40
-                    quit()
             
         tela.fill(branco)
         tela.blit(fundoDead, (0,0))
@@ -277,7 +278,6 @@ def dead(pontos):
 
         # Botões invisíveis sobre a imagem
         startButton = pygame.Rect(370, 520, 270, 60)
-        quitButton = pygame.Rect(370, 600, 270, 60)
 
         pygame.display.update()
         relogio.tick(60)
@@ -285,60 +285,57 @@ def dead(pontos):
 
 
 def start():
-    larguraButtonStart = 150
-    alturaButtonStart  = 40
-    larguraButtonQuit = 150
-    alturaButtonQuit  = 40
-while True:
 
-    for evento in pygame.event.get():
+    while True:
 
-        if evento.type == pygame.QUIT:
-            pygame.quit()
-            quit()
+        for evento in pygame.event.get():
 
-        elif evento.type == pygame.MOUSEBUTTONUP:
-
-            if startButton.collidepoint(evento.pos):
-                jogar()
-
-            if quitButton.collidepoint(evento.pos):
+            if evento.type == pygame.QUIT:
                 pygame.quit()
                 quit()
 
-    # Desenha a tela
-    tela.fill(branco)
-    tela.blit(fundoStart, (0,0))
+            elif evento.type == pygame.MOUSEBUTTONUP:
 
-    # Retângulos para testar a posição
-    startButton = pygame.Rect(380, 360, 250, 65)
-    quitButton = pygame.Rect(380, 440, 250, 60)
+                if startButton.collidepoint(evento.pos):
+                    jogar()
 
-    # Nome do jogador
-# Sombra
-    textoNome = fonteMenu.render(f"Jogador: {nome}", True, preto)
-    tela.blit(textoNome, (12,525))
+                    pygame.quit()
+                    quit()
 
-# Texto
-    textoNome = fonteMenu.render(f"Jogador: {nome}", True, amarelo)
-    tela.blit(textoNome, (410, 525 ))
-# Instruções
-    texto1 = fonteMenu.render("Desvie dos carros para sobreviver.", True, amarelo)
-    tela.blit(texto1, (15, 15))
+        tela.fill(branco)
+        tela.blit(fundoStart, (0, 0))
 
-    texto2 = fonteMenu.render("Use as setas para mover o taxi.", True, amarelo)
-    tela.blit(texto2, (15, 35))
+        # Botões invisíveis
+        startButton = pygame.Rect(380, 360, 250, 65)
 
-# Melhor jogador
-    textoRecorde = fonteMenu.render(
-    f"The Best - {nome_maior} - {maior_pontos} - {dataJogada} - {horaJogada}",
-    True,
-    amarelo
-)
-    tela.blit(textoRecorde, (480, 15))
-    
-    pygame.display.update()
-    relogio.tick(60)
+        textoNome = fonteMenu.render(f"Jogador: {nome}", True, amarelo)
+        tela.blit(textoNome, (410, 525))
+
+        texto1 = fonteMenu.render(
+            "Desvie dos carros para sobreviver.",
+            True,
+            amarelo
+        )
+        tela.blit(texto1, (15, 15))
+
+        texto2 = fonteMenu.render(
+            "Use as setas para mover o taxi.",
+            True,
+            amarelo
+        )
+        tela.blit(texto2, (15, 35))
+
+        textoRecorde = fonteMenu.render(
+            f"The Best - {nome_maior} - {maior_pontos} - {dataJogada} - {horaJogada}",
+            True,
+            amarelo
+        )
+        tela.blit(textoRecorde, (480, 15))
+
+        pygame.display.update()
+        relogio.tick(60)
 
 
-    start()
+
+
+start()
