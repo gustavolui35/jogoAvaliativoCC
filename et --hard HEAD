@@ -1,0 +1,168 @@
+[33mcommit 0e92e798078d3361f6f847fed678ca67a9a35ea0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Tue Jun 9 23:42:09 2026 -0300
+
+    Save de precaução
+
+[33mcommit 0922a93051823653e22aa3b52b7deed8ddd53ab8[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Tue Jun 9 20:53:14 2026 -0300
+
+    Alterações do botoes e fontes
+
+[33mcommit 8fda0d7b9742d491b92f89aef2224341e88e33a5[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Tue Jun 9 16:52:35 2026 -0300
+
+    Pontuação dead
+
+[33mcommit d2464085bbbd31c8f9f3a98c3628a818a91b3738[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Tue Jun 9 16:42:13 2026 -0300
+
+    Pyttsx3
+
+[33mcommit dfc4a4a8ba8753f33368f6e4001591f214669c38[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Tue Jun 9 00:36:44 2026 -0300
+
+    ESC
+
+[33mcommit 3b50c86a60dfcdad1878a736a36ae20738659ba8[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Tue Jun 9 00:26:33 2026 -0300
+
+    PAUSE
+
+[33mcommit 1c7b66ceba96366e2be1470d8bd3d0ab1d62afdd[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Tue Jun 9 00:11:53 2026 -0300
+
+    Sol adicionado
+
+[33mcommit a94b428e8080ba5595ee2914de144f583bec502c[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Tue Jun 9 00:08:20 2026 -0300
+
+    Teste
+
+[33mcommit b075924923fee21905773e0e90c415b0f3346db1[m
+Merge: a49d297 4a7fc5a
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Mon Jun 8 23:18:44 2026 -0300
+
+    Merge branch 'main' of https://github.com/gustavolui35/jogoAvaliativoCC
+
+[33mcommit a49d2972fc8c7c699e82ea1ccd2c628b9d06cc6a[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Mon Jun 8 23:16:56 2026 -0300
+
+    Finalizando merge
+
+[33mcommit 730f33a7b37ca50f9250ee909a2bc020a5eb3132[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Mon Jun 8 23:10:29 2026 -0300
+
+    Adicionando objeto
+
+[33mcommit 4a7fc5ad71a641035667b976d0ed9eae8b015c98[m
+Author: Rodrigo lordi <1111500@atitus.edu.br>
+Date:   Mon Jun 8 21:08:54 2026 -0300
+
+    Add collaborator information to README
+
+[33mcommit 8db65d368a9984d21990e8ae7c1e5eff8d6e72b6[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Mon Jun 8 17:04:16 2026 -0300
+
+    Alterando o eixo
+
+[33mcommit 9efe574f43de6870566a0f26e94290d4cc088e7e[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Mon Jun 8 16:54:24 2026 -0300
+
+    Adicionando a hora
+
+[33mcommit b677e8a1bc955054afe7cea24ad063c4119bf0f1[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Mon Jun 8 16:17:01 2026 -0300
+
+    Criando função nova
+
+[33mcommit d98d14e6c0be86af6fd7d7d3502c51484766e9d7[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Mon Jun 8 00:22:38 2026 -0300
+
+    Ultima mudança do dia 07.06.2026 00:00
+
+[33mcommit 722f4301152df8e52c6708e5844ce4707a8cd19e[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Mon Jun 8 00:07:57 2026 -0300
+
+    Corrigindo o fundo
+
+[33mcommit 59e212f51a369d7ab5271285804bde48136ce8a1[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Sun Jun 7 23:42:04 2026 -0300
+
+    Adicionando objetos
+
+[33mcommit 62a55df76d44dfbb59a2e4a77eb1f2db57dc50e5[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Sun Jun 7 23:15:50 2026 -0300
+
+    Batida, Fim de jogo e Tela inicial
+
+[33mcommit a028dac28e39466a729898e561c7609d7b098f1c[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Sun Jun 7 22:57:47 2026 -0300
+
+    Trilha sonora
+
+[33mcommit 4f78193ec0bfbb94c917219bb2b497207221ca31[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Sun Jun 7 22:45:54 2026 -0300
+
+    Alterando Fundo
+
+[33mcommit b080ada12cd510ed03b5cf96860d684940034a92[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Sun Jun 7 22:35:40 2026 -0300
+
+    Mudando icone e personagem
+
+[33mcommit 148aa52a517387a0c25f2b90591fc4b753770968[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Sun Jun 7 22:16:41 2026 -0300
+
+    Mudando de assets para bases
+
+[33mcommit a6b4fe86a63ad678a83f1cdc63ac2b347c3d2d2d[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Sun Jun 7 21:46:03 2026 -0300
+
+    Adicionando descrição do README
+
+[33mcommit 0056e3db25d0f112c6b887338b316941c930a18c[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Sun Jun 7 20:52:52 2026 -0300
+
+    Adicionando README
+
+[33mcommit e8d7c345c17e03054113344876356013f516f953[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Thu Jun 4 22:53:55 2026 -0300
+
+    Resolução da tela
+
+[33mcommit 6e195d0fccf149dbe25c55108beca16b095f8439[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Thu Jun 4 22:44:05 2026 -0300
+
+    Projeto inicial
+
+[33mcommit fde308d0d3d78e84b04e012ee7dcef5c48cee7ec[m
+Author: gustavolui35 <gustavolui678@gmail.com>
+Date:   Thu Jun 4 22:37:17 2026 -0300
+
+    Projeto inicial

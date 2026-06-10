@@ -64,9 +64,12 @@ def jogar():
 
     velocidadeMovPersona = 5
 
+    pistas = [180, 240, 300, 360, 420]
+
     posicaoXMissel = 800
-    posicaoYMissel = 100
+    posicaoYMissel = random.choice(pistas)
     velocidadeMissel = 2
+
 
     pontos = 0
 
@@ -176,7 +179,9 @@ def jogar():
 
 
             velocidadeMissel += 1
-            posicaoYMissel = random.randint(180,430)
+            pistas = [180, 240, 300, 360, 420]
+            posicaoYMissel = random.choice(pistas)
+
 
         # DESENHAR
 
