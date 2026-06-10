@@ -21,7 +21,7 @@ while True:
         print("Nome Inválido!")
         
 tamanho = (1000,700)
-pygame.display.set_caption("Iron Man do Marcão")
+pygame.display.set_caption("Taxi GTA")
 icone  = pygame.image.load("bases/Icone.png")
 pygame.display.set_icon(icone)
 relogio = pygame.time.Clock()
@@ -36,10 +36,10 @@ fundo = pygame.transform.scale(fundo, (1129,700))
 fundoDead = pygame.image.load("bases/FimDeJogo.png")
 fundoStart = pygame.image.load("bases/TelaInicial.png")
 
-iron = pygame.image.load("bases/Personagem.png")
-iron = pygame.transform.scale(iron, (180, 90))
-missel = pygame.image.load("bases/Azul.png")
-missel = pygame.transform.scale(missel, (160,80))
+taxi = pygame.image.load("bases/Personagem.png")
+taxi = pygame.transform.scale(taxi, (180, 90))
+carro = pygame.image.load("bases/Azul.png")
+carro = pygame.transform.scale(carro, (160,80))
 passaro = pygame.image.load("bases/Passaro.png")
 passaro = pygame.transform.scale(passaro, (50,40))
 explosaoSound = pygame.mixer.Sound("bases/Batida.mp3")
@@ -66,9 +66,9 @@ def jogar():
 
     pistas = [180, 240, 300, 360, 420]
 
-    posicaoXMissel = 800
-    posicaoYMissel = random.choice(pistas)
-    velocidadeMissel = 2
+    posicaoXcarro = 800
+    posicaoYcarro = random.choice(pistas)
+    velocidadecarro = 2
 
 
     pontos = 0
@@ -165,12 +165,12 @@ def jogar():
             posicaoXPassaro = 1000
             posicaoYPassaro = random.randint(20,150)
 
-        # MISSEL
+        # carro
 
-        posicaoXMissel -= velocidadeMissel
+        posicaoXcarro -= velocidadecarro
 
-        if posicaoXMissel < -125:
-            posicaoXMissel = 800
+        if posicaoXcarro < -125:
+            posicaoXcarro = 800
             pontos += 1
             
             if pontos == 20:
@@ -178,9 +178,9 @@ def jogar():
              voz.runAndWait()
 
 
-            velocidadeMissel += 1
+            velocidadecarro += 1
             pistas = [180, 240, 300, 360, 420]
-            posicaoYMissel = random.choice(pistas)
+            posicaoYcarro = random.choice(pistas)
 
 
         # DESENHAR
@@ -202,8 +202,8 @@ def jogar():
             fundoMov2 = 1129
 
         tela.blit(passaro,(posicaoXPassaro,posicaoYPassaro))
-        tela.blit(iron,(posicaoXPersona,posicaoYPersona))
-        tela.blit(missel,(posicaoXMissel,posicaoYMissel))
+        tela.blit(taxi,(posicaoXPersona,posicaoYPersona))
+        tela.blit(carro,(posicaoXcarro,posicaoYcarro))
 
         texto = fonteMenu.render("Pontos: " + str(pontos),True,branco)
         tela.blit(texto,(700,15))
@@ -214,12 +214,12 @@ def jogar():
         pixelsPersonaX = list(range(posicaoXPersona,posicaoXPersona+116))
         pixelsPersonaY = list(range(posicaoYPersona,posicaoYPersona+51))
 
-        pixelsMisselX = list(range(posicaoXMissel,posicaoXMissel+125))
-        pixelsMisselY = list(range(posicaoYMissel,posicaoYMissel+25))
+        pixelscarroX = list(range(posicaoXcarro,posicaoXcarro+125))
+        pixelscarroY = list(range(posicaoYcarro,posicaoYcarro+25))
 
-        if len(list(set(pixelsMisselY).intersection(set(pixelsPersonaY)))) > dificuldade:
+        if len(list(set(pixelscarroY).intersection(set(pixelsPersonaY)))) > dificuldade:
 
-            if len(list(set(pixelsMisselX).intersection(set(pixelsPersonaX)))) > dificuldade:
+            if len(list(set(pixelscarroX).intersection(set(pixelsPersonaX)))) > dificuldade:
 
                 escreverDados(nome,pontos)
                 dead(pontos)
