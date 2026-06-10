@@ -5,8 +5,8 @@ import pyttsx3
 voz = pyttsx3.init()
 voz.setProperty("rate", 180)
 
-from recursos.funcoes import inicializarBancoDeDados, limpar_tela, escreverDados, maior_pontuador
-from recursos.funcoes import gerar_passageiro
+from recursos.trabalho import inicializarBancoDeDados, limpar_tela, escreverDados, maior_pontuador
+from recursos.trabalho import gerar_passageiro
 
 limpar_tela()
 inicializarBancoDeDados()
@@ -278,12 +278,6 @@ def dead(pontos):
         # Botões invisíveis sobre a imagem
         startButton = pygame.Rect(370, 520, 270, 60)
         quitButton = pygame.Rect(370, 600, 270, 60)
-
-        # Descomente apenas para ajustar a posição
-        pygame.draw.rect(tela, (255,0,0), startButton, 2)
-        pygame.draw.rect(tela, (0,255,0), quitButton, 2)
-
-
 
         pygame.display.update()
         relogio.tick(60)
